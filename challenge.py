@@ -15,10 +15,13 @@
 from random import randint 
 
 def find_optimal_quest(d):
-    
-    # write your code here
-    # it should return the boss with the best loot! Feel free to ask us questions :)
-    pass 
+    maxLoot = -1000;
+    maxKey = "";
+    for name,loot in d.items():
+        if loot > maxLoot:
+            maxLoot = loot
+            maxKey = name
+    return maxKey
     
 
 
@@ -84,5 +87,6 @@ def validate_answer(d):
     return max(list((v, k) for (k, v) in d.items()))[1]
    
 quests = generate_quest_board()
-find_optimal_quest()
-assert validate_answer(quests) == find_optimal_quest(quest)
+key = find_optimal_quest(quests)
+assert validate_answer(quests) == find_optimal_quest(quests)
+print(key)
